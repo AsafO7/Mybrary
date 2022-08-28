@@ -7,11 +7,10 @@
     <title>Mybrary</title>
 </head>
 <body>
-    Before
-    <br>
-    <!-- this line will include every one of our pages in this body page -->
+    <!-- Including this file to appear in all of our pages (content is constant in every page) -->
+    <%- include('../partials/header.ejs') %>
+    <%- include('../partials/errorMessage.ejs') %>
+    <!-- this line will include every one of our pages in this body page (content changes depending on the page we're rendering) -->
     <%- body %>
-    <br>
-    After
 </body>
 </html>
