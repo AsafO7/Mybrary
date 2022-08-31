@@ -12,6 +12,8 @@ router.get('/', async (req, res) => {
     }
     try {
         const authors = await Author.find(searchOptions)
+        // The veriables in the object are are going to be sent to our ejs file.
+        // That's why in the file index.ejs we can access the authors and searchOptions variables.
         res.render("authors/index", { authors: authors, searchOptions: req.query })
     }
     catch(err) {
@@ -21,6 +23,7 @@ router.get('/', async (req, res) => {
 
 // New author route
 router.get('/new', (req, res) => {
+    // rendering the file new.ejs and sending it the variable author, which is a new Author object we can use in our ejs file
     res.render('authors/new', { author: new Author() })
 })
 

@@ -1,16 +1,18 @@
-// checks if we're running in the production enviorment
-// NODE_ENV will be set by default by Node
+// checks if we're running in the production enviorment. NODE_ENV will be set by default by Node.
 if(process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
+// Libraries
 const express = require("express")
 const app = express()
 const expressLayouts = require("express-ejs-layouts")
 const bodyParser = require('body-parser')
 
+// Route handlers
 const indexRouter = require('./routes/index')
 const authorRouter = require('./routes/authors')
+const booksRouter = require("./routes/books")
 
 /* A template engine enables you to use static template files in your application.
    At runtime, the template engine replaces variables in a template file with actual values, and transforms the template into an HTML file sent to the client.
@@ -34,6 +36,7 @@ db.once('open', () => console.log("Connected to mongoose"))
 
 app.use('/', indexRouter)
 app.use('/authors', authorRouter)
+app.use("/books", booksRouter)
 
 
 app.listen(process.env.PORT || 3000)

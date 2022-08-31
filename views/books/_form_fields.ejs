@@ -1,0 +1,41 @@
+<div>
+    <!-- We use _ in the file name to indicate that this is a partial file and not a file that renders to the server (naming conventions) -->
+    <label>Title</label>
+    <!-- When we use this input in the new.ejs page, the title will be empty because we're sending a new object. -->
+    <!-- When we use it in the edit page, there's an existing Book object already, so book.title will be displayed. -->
+    <!-- The <%= %> tells the server to create whatever text we got from inside of this and output it as HTML to the page. -->
+    <input type="text" name="title" value="<%= book.title %>">
+</div>
+<div>
+    <label>Author</label>
+    <select name="author">
+        <% authors.forEach(author => { %>
+            <!-- author in book.author is an id (that's how we defined its type in the model). That's why we don't need to write "book.author.id" -->
+            <% if(author.id === book.author) { %>
+                <option selected label="<%= author.name %>" value="<%= author.id %>">
+            <% } else { %>
+                <option label="<%= author.name %>" value="<%= author.id %>">
+            <% } %> 
+        <% }) %>
+    </select>
+</div>
+<div>
+    <label>Publish Date</label>
+    <!-- book.publishDate is of type Date, so the value will look like this: yy-mm-ddThh:mm.
+        Because of that, we need to split it on the "T", because we don't want the time section of the value. -->
+    <input type="date" name="publishDate" 
+            value="<%= book.publishDate == null ? '' :
+            book.publishDate.toISOString().split("T")[0] %>">
+</div>
+<div>
+    <label>Page Count</label>
+    <input type="number" name="pageCount" min="1" value="<%= book.pageCount %>">
+</div>
+<div>
+    <label>Cover</label>
+    <input type="file" name="cover">
+</div>
+<div>
+    <label>Description</label>
+    <textarea name="description"><%= book.description %></textarea>
+</div>

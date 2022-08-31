@@ -1,0 +1,25 @@
+<h2>Search Book</h2>
+<form action="/books" method="GET">
+    <div>
+        <label>Title</label>
+        <input type="text" name="title" value="<%= searchOptions.title %>">
+    </div>
+    <div>
+        <label>Published After</label>
+        <!-- in _form_fields(books) we had to convert the variable into ISO string to read the date because it came in a different format than we wanted,
+        but since we're posting and getting the exact same data from the server without hitting the database first, 
+        we can just use this variable without converting it-->
+        <input type="date" name="publishedAfter"
+        value="<%= searchOptions.publishedAfter %>">
+    </div>
+    <div>
+        <label>Published Before</label>
+        <input type="date" name="publishedBefore" value="<%= searchOptions.publishedBefore %>">
+    </div>
+    <button type="submit">Search</button>
+</form>
+<div>
+    <% books.forEach(book => { %>
+        <img height="150" width="100" src="<%= book.coverImagePath %>">
+    <% }) %>
+</div>
