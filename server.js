@@ -8,6 +8,8 @@ const express = require("express")
 const app = express()
 const expressLayouts = require("express-ejs-layouts")
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
+
 
 // Route handlers
 const indexRouter = require('./routes/index')
@@ -26,6 +28,9 @@ app.set("layout", "layouts/layout")
 app.use(expressLayouts)
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
+// the name '_method' will act like a name of an input in our form.
+// since it's very unlikely that we'll have a form with the name '_method', that's the name we use here.
+app.use(methodOverride('_method'))
 
 const mongoose = require("mongoose")
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
