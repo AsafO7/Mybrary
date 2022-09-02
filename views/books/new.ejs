@@ -1,10 +1,12 @@
 <h2 class="page-header">New Book</h2>
 <form action="/books" method="POST">
     <%- include('_form_fields') %>
-    <a href="/books">Cancel</a>
-    <!-- When clicking this button, it sends the value of the input element and the param name is the value
-    we give to the name param in the input element (in this case the param's name is "name", but if we change the value
-    of the param name in the input element to, for example, banana, in authors.js we will have access to req.body.banana instead
-    of req.body.name). The param "name" comes from the input element in the file _form_fields -->
-    <button type="submit">Create</button>
+    <div class="form-row form-row-end btn-row">
+        <a class="btn btn-danger" href="/books">Cancel</a>
+        <!-- When clicking this button, it sends the value of the input element and the param name is the value
+        we give to the name param in the input element (in this case the param's name is "name", but if we change the value
+        of the param name in the input element to, for example, banana, in authors.js we will have access to req.body.banana instead
+        of req.body.name). The param "name" comes from the input element in the file _form_fields -->
+        <button class="btn btn-primary" type="submit">Create</button>
+    </div>
 </form>

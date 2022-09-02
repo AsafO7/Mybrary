@@ -1,6 +1,10 @@
 <!-- We use _ in the name to indicate that this is a partial file and not a file that renders to the server (naming conventions) -->
-<label>Name</label>
-<!-- When we use this input in the new.ejs page, the name will be empty because we're sending a new object. -->
-<!-- When we use it in the edit page, there's an existing Author object already, so author.name will be displayed. -->
-<!-- The <%= %> tells the server to create whatever text we got from inside of this and output it as HTML to the page. -->
-<input type="text" name="name" value="<%= author.name %>">
+<div class="form-row">
+    <div class="form-item">
+        <label>Name</label>
+        <!-- When we use this input in the new.ejs page, the name will be empty because we're sending a new object. -->
+        <!-- When we use it in the edit page, there's an existing Author object already, so author.name will be displayed. -->
+        <!-- The <%= %> tells the server to create whatever text we got from inside of this and output it as HTML to the page. -->
+        <input type="text" name="name" value="<%= author.name %>">
+    </div>
+</div>
