@@ -7,6 +7,7 @@
     <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
     <link
     href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/stylesheets/main.css">
     <!-- defer makes it so the script will run only after our page is done loading -->
     <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
     <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
@@ -16,10 +17,14 @@
     <title>Mybrary</title>
 </head>
 <body>
-    <!-- Including this file to appear in all of our pages (content is constant in every page) -->
-    <%- include('../partials/header.ejs') %>
-    <%- include('../partials/errorMessage.ejs') %>
-    <!-- this line will include every one of our pages in this body page (content changes depending on the page we're rendering) -->
-    <%- body %>
+    <div class="container">
+        <!-- Including this file to appear in all of our pages (content is constant in every page) -->
+        <%- include('../partials/header.ejs') %>
+        <div class="inner-container">
+            <%- include('../partials/errorMessage.ejs') %>
+            <!-- this line will include every one of our pages in this body page (content changes depending on the page we're rendering) -->
+            <%- body %>
+        </div>
+    </div>
 </body>
 </html>
